@@ -1,5 +1,6 @@
 package com.ems.Controller;
 
+import com.ems.Entity.Employee;
 import com.ems.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,5 +15,12 @@ public class EmployeeController {
     public String displayHomePage(Model model){
         model.addAttribute("getAllEmployees",employeeService.getAllEmployees());
     return "index";
+    }
+
+    @GetMapping("/addEmployee")
+    public String AddEmployeeForm(Model model){
+    Employee emp = new Employee();
+    model.addAttribute("employee","emp");
+    return "AddEmpForm";
     }
 }
