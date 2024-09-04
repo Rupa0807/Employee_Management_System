@@ -17,10 +17,10 @@ public class EmployeeController {
     return "index";
     }
 
-    @GetMapping("/addEmployee")
+    @GetMapping("/addEmployeeForm")
     public String AddEmployeeForm(Model model){
-    Employee emp = new Employee();
-    model.addAttribute("employee","emp");
+    Employee employee = new Employee();
+    model.addAttribute("employee",employee);
     return "AddEmpForm";
     }
 }
