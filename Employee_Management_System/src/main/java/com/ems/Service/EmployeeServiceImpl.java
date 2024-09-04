@@ -4,8 +4,10 @@ import com.ems.Entity.Employee;
 import com.ems.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +43,8 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Page<Employee> createPages(int pageNo, int totalPages) {
+    public Page<Employee> createPages(int pageNo, int maxItemPerPage) {
+        PageRequest pageable= PageRequest.of(pageNo,maxItemPerPage);
         return null;
     }
 }

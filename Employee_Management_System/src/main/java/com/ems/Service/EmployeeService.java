@@ -17,5 +17,5 @@ public interface EmployeeService {
 
     void deleteEmployee(int id);
 
-    Page<Employee> createPages(int pageNo,int totalPages);
+    Page<Employee> createPages(int pageNo,int MaxItemPerPage);
 }
