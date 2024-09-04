@@ -28,6 +28,7 @@ public class EmployeeController {
 
     @PostMapping("/SaveEmployee")
     public String SaveEmployee(@ModelAttribute("employee") Employee employee){
+        setUpperCase(employee);
         employeeService.save(employee);
 
         return "redirect:/";
@@ -43,19 +44,23 @@ public class EmployeeController {
         return modelandView;
     }
 
-    @DeleteMapping("/deleteEmployee")
-    public void deleteEmployee(){
-
-
+    @RequestMapping ("/deleteEmployee/{id}")
+    public String deleteEmployee(@PathVariable("id") int id){
+     employeeService.deleteEmployee(id);
+      return "redirect:/";
 
     }
 
-    @PutMapping("/SaveupdateEmployee/{id}")
-    public String SaveupdateEmployee(@PathVariable("id") int id ){
-        Employee emp= employeeService.getEmployeebyId(id);
-        employeeService.save(emp);
+    @RequestMapping("/SaveupdateEmployee")
+    public String SaveupdateEmployee(@ModelAttribute("employee") Employee employee){
+        setUpperCase(employee);
+        employeeService.save(employee);
 
         return "redirect:/";
     }
 
+    void setUpperCase(Employee employee){
+        employee.setFirstName(employee.getFirstName().toUpperCase());
+        employee.setLastName(employee.lastName.toUpperCase());
+    }
 }
