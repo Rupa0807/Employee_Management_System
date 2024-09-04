@@ -13,7 +13,7 @@
 <h1 align="center">Employee List</h1>
      <a th:href="@{/addEmployeeForm}">
          <button class="btn btn-primary " type="button"> Add Employee </button>
-     </a><br>
+     </a><br><br>
 <table align="center" border="2" class="table table-striped table-bordered">
     <thead><tr class="table-active"><th>First Name</th><th>Last Name</th><th>E-Mail</th></tr></thead>
     <tr th:each="employee :${getAllEmployees}">

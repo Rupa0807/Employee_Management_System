@@ -9,4 +9,6 @@ import java.util.List;
 public interface EmployeeService {
 
     public List<Employee> getAllEmployees();
+
+    void save(Employee employee);
 }

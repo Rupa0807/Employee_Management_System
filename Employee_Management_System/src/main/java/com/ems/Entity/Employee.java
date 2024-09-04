@@ -19,7 +19,9 @@ public class Employee {
     @Column(name = "LAST_NAME")
     public String lastName;
  @Id
- @GeneratedValue(strategy = GenerationType.AUTO)
+ @GeneratedValue(strategy = GenerationType.IDENTITY,generator ="employeeIdSeq")
+ @SequenceGenerator(name = "employeeIdSeq",initialValue = 3,allocationSize = 1)
+
  @Column(name = "ID")
  private  int id;
 
