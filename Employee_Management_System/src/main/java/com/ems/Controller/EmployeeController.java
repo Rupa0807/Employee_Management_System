@@ -5,9 +5,8 @@ import com.ems.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class EmployeeController {
@@ -33,4 +32,30 @@ public class EmployeeController {
 
         return "redirect:/";
     }
+
+    @GetMapping("/updateEmployee/{id}")
+    public ModelAndView updateEmployee(@PathVariable("id") int id , ModelAndView modelandView){
+       Employee emp= employeeService.getEmployeebyId(id);
+        System.out.println("employee by Id: "+ emp);
+        modelandView.setViewName("updateEmp");
+       modelandView.addObject("employee", emp);
+
+        return modelandView;
+    }
+
+    @DeleteMapping("/deleteEmployee")
+    public void deleteEmployee(){
+
+
+
+    }
+
+    @PutMapping("/SaveupdateEmployee/{id}")
+    public String SaveupdateEmployee(@PathVariable("id") int id ){
+        Employee emp= employeeService.getEmployeebyId(id);
+        employeeService.save(emp);
+
+        return "redirect:/";
+    }
+
 }
