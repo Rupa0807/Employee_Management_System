@@ -2,4 +2,6 @@
 Employee Management System
 
 
-This is an Employee Management System project created using SpringBoot, ThymeLeaf, JPA, MySQL, Spring MVC
+This is an Employee Management System project created using SpringBoot, ThymeLeaf, JPA, MySQL, Spring MVC.
+Implemented Pagination for the employees using Pageable interface
+
