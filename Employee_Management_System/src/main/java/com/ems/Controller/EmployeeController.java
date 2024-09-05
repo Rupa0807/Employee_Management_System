@@ -18,8 +18,8 @@ public class EmployeeController {
 
 @GetMapping("/")
     public String displayHomePage(Model model){
-        model.addAttribute("getAllEmployees",employeeService.getAllEmployees());
-    return "index";
+   // model.addAttribute("getAllEmployees",employeeService.getAllEmployees());
+    return findMyPages(1,model);
     }
 
     @GetMapping("/addEmployeeForm")
@@ -76,19 +76,18 @@ public class EmployeeController {
     4.In Controller, add the logic to create Pagination as below
 
     * */
-    @RequestMapping("/Page/{PageNo}")
-    public  String findmyPages(@PathVariable("PageNo") int pageNo, Model model){
+    @RequestMapping("/page/{PageNo}")
+    public  String findMyPages(@PathVariable("PageNo") int pageNo, Model model){
     int maxPageItems=5; //max items to be dispalyed per page;
 
     Page<Employee> page=employeeService.createPages(pageNo,maxPageItems);
-        List<Employee> EmployeeList= page.getContent();
+       List < Employee > EmployeeList = page.getContent();
         System.out.println(page.getContent());
 
         model.addAttribute("currentPage",pageNo);
         model.addAttribute("totalPages",page.getTotalPages());
         model.addAttribute("totalItems",page.getTotalElements());
-        model.addAttribute("totalItems",page.getTotalElements());
-        model.addAttribute("EmployeeList",EmployeeList);
+        model.addAttribute("getAllEmployees",EmployeeList);
 
         return "index";
 
